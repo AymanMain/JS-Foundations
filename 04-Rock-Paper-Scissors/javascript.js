@@ -1,5 +1,3 @@
-console.log("Rock ,Paper ,Scissors");
-
 function getComputerChoice(){
     let botChoice;
     let botChoiceNum=Math.random();
@@ -10,8 +8,7 @@ function getComputerChoice(){
     } else if(botChoiceNum>=2/3){
         botChoice="scissors";
     }
-    return botChoice;
-    
+    return botChoice; 
 };
 console.log(getComputerChoice());
 
