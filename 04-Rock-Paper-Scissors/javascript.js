@@ -11,7 +11,6 @@ function getComputerChoice(){
     }
     return botChoice; 
 };
-console.log(getComputerChoice());
 
 function getHumanChoice(){
     let HumanChoice=prompt("Choose wisely !","Rock , Paper , Scissors");
@@ -23,30 +22,39 @@ function getHumanChoice(){
     return HumanChoice;
 };
 
-
-let ComputerScore=0,HumanScore=0;
-
-
-
 function playRound(CPU,Player){
+   
     if(CPU==Player){
         console.log("You Both Picked "+CPU+".\n")
-        console.log("Draw ,You Think Like The Machine , isn't that Something ? \n"); 
+        console.log("Draw ,You Think Like The Machine , isn't that Something ? \n");
+        return 1;
     }else if ((Player=="paper" && CPU=="rock")||(Player=="rock" && CPU=="scissors")||(Player=="scissors" && CPU=="paper")) {
         console.log("You Win ! "+Player+" Beats "+CPU+".\n")
-        HumanScore++;
+        return 2;
     }else if ((Player=="rock" && CPU=="paper")||(Player=="scissors" && CPU=="rock")||(Player=="paper" && CPU=="scissors")) {
         console.log("You Lose ! "+CPU+" Beats "+Player+".\n")
-        ComputerScore++;
+        return 3;
     };
+    return res;
 };
 
 // Main Game
 function playGame(){
+    let ComputerScore=0;
+    let HumanScore=0;
     while (ComputerScore<3 && HumanScore<3) {
             let CPU=getComputerChoice();
             let Player=getHumanChoice();
-        playRound(CPU,Player);
+        let res=playRound(CPU,Player);
+        switch (res) {
+            case 2:
+            HumanScore++;  
+                break;
+            case 3:
+            ComputerScore++;  
+                break;
+        };
+    console.log("Score is "+HumanScore+":"+ComputerScore);
     };
     if (ComputerScore===3) {
         console.log("You Lose! Good Luck Next Time.");
