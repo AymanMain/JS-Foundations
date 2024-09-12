@@ -1,3 +1,4 @@
+
 function getComputerChoice(){
     let botChoice;
     let botChoiceNum=Math.random();
@@ -21,14 +22,13 @@ function getHumanChoice(){
     };
     return HumanChoice;
 };
-console.log(getHumanChoice());
+
 
 let ComputerScore=0,HumanScore=0;
 
-function playRound(){
-    let CPU=getComputerChoice();
-    let Player=getHumanChoice();
-    
+
+
+function playRound(CPU,Player){
     if(CPU==Player){
         console.log("You Both Picked "+CPU+".\n")
         console.log("Draw ,You Think Like The Machine , isn't that Something ? \n"); 
@@ -41,15 +41,21 @@ function playRound(){
     };
 };
 
+// Main Game
 function playGame(){
     while (ComputerScore<3 && HumanScore<3) {
-        playRound();
-    }
-    if (ComputerScore=3) {
-        console.log("You Lose! Good Luck Next Time.")
-        ComputerScore=0;HumanScore=0;
-    }else if (HumanScore=3) {
-        console.log("You Win !.")
-        HumanScore=0;ComputerScore=0;
+            let CPU=getComputerChoice();
+            let Player=getHumanChoice();
+        playRound(CPU,Player);
     };
+    if (ComputerScore===3) {
+        console.log("You Lose! Good Luck Next Time.");
+        
+    }else if (HumanScore===3) {
+        console.log("You Win !.");
+    };
+    HumanScore=0;
+    ComputerScore=0;
 };
+
+playGame();
