@@ -23,7 +23,7 @@ function getHumanChoice(){
 };
 console.log(getHumanChoice());
 
-let ComputerScore,HumanScore=0;
+let ComputerScore=0,HumanScore=0;
 
 function playRound(){
     let CPU=getComputerChoice();
@@ -36,8 +36,20 @@ function playRound(){
         console.log("You Win ! "+Player+" Beats "+CPU+".\n")
         HumanScore++;
     }else if ((Player=="rock" && CPU=="paper")||(Player=="scissors" && CPU=="rock")||(Player=="paper" && CPU=="scissors")) {
-        console.log("You Lose ! "+Player+" Beats "+CPU+".\n")
+        console.log("You Lose ! "+CPU+" Beats "+Player+".\n")
         ComputerScore++;
     };
 };
 
+function playGame(){
+    while (ComputerScore<3 && HumanScore<3) {
+        playRound();
+    }
+    if (ComputerScore=3) {
+        console.log("You Lose! Good Luck Next Time.")
+        ComputerScore=0;HumanScore=0;
+    }else if (HumanScore=3) {
+        console.log("You Win !.")
+        HumanScore=0;ComputerScore=0;
+    };
+};
